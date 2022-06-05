@@ -22,7 +22,7 @@ export class ValidationPipe implements PipeTransform {
       // 只需要取第一个错误信息并返回即可
       const msg = Object.values(errors[0].constraints)[0];
       // 抛出这个异常,逻辑就会交付nest的错误拦截去了
-      ErrorResponse.fail(msg);
+      ErrorResponse.fail(msg, 200);
     }
     return value;
   }
