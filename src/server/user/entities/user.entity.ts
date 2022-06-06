@@ -47,6 +47,12 @@ export class User {
   })
   nickname: string;
 
+  @Column('varchar', {
+    nullable: true,
+    comment: '头像',
+  })
+  avatar: string;
+
   @CreateDateColumn({
     type: 'timestamp',
     name: 'created_at',
