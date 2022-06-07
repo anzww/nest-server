@@ -60,6 +60,10 @@ export class UserService {
     )[0];
   }
 
+  async updateAvatar(user) {
+    await this.userRepo.save(user);
+  }
+
   remove(id: number) {
     return `This action removes a #${id} user`;
   }

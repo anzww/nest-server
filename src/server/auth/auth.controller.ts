@@ -11,6 +11,7 @@ import { AuthService } from './auth.service';
 import { AuthGuard } from '@nestjs/passport';
 import { ApiTags } from '@nestjs/swagger';
 import { LoginDto } from './dto/login.dto';
+import { NoAuth } from '../../common/decorator/customize';
 
 @ApiTags('验证')
 @Controller('auth')
@@ -18,6 +19,7 @@ export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
   @UseInterceptors(ClassSerializerInterceptor)
+  @NoAuth()
   @UseGuards(AuthGuard('local'))
   @Post('login')
   async login(@Body() user: LoginDto, @Req() req) {
